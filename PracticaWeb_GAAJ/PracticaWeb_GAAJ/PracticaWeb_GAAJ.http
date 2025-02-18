@@ -1,0 +1,6 @@
+@PracticaWeb_GAAJ_HostAddress = http://localhost:5211
+
+GET {{PracticaWeb_GAAJ_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\PracticaWeb_GAAJ.props" />
+</Project>

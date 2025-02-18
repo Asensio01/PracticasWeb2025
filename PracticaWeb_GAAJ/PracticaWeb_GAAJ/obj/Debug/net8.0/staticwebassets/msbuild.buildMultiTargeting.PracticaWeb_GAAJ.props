@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PracticaWeb_GAAJ.props" />
+</Project>
