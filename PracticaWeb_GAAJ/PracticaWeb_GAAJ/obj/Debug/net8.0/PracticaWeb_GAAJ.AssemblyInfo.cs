@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PracticaWeb_GAAJ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c260927fe88cb11d44b05bdf5c15062e5bd008eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("PracticaWeb_GAAJ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PracticaWeb_GAAJ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

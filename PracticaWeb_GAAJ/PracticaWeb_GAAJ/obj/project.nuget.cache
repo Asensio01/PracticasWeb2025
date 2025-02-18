@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "juXXW7i3kYrSS2g0NUKPvhJipcCgUo/ItBusm6W6ElXy86TkiUyH881dIDz5qDcqKi+lLsrUt+dp/KWzyIMmkw==",
+  "dgSpecHash": "2zyj/EOfZ7hFQuuL2MD+KAD8tFxlI/EyCQHGMgUlputt7WWkoAJKywZJT69QD8/51cRnW3qx3AmMH2dwlv85Lw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\coman\\source\\repos\\PracticaWeb_GAAJ\\PracticaWeb_GAAJ\\PracticaWeb_GAAJ.csproj",
+  "projectFilePath": "C:\\Users\\coman\\OneDrive\\Escritorio\\PracticaWeb\\PracticaWeb_GAAJ\\PracticaWeb_GAAJ\\PracticaWeb_GAAJ.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\coman\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\coman\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

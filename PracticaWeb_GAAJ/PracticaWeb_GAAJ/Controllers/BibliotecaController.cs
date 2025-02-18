@@ -197,7 +197,113 @@ namespace PracticaWeb_GAAJ.Controllers
 
             return Ok(libro);
         }
+        [HttpGet("Autor-con-más-Libros/{Autor}")]
+        public IActionResult MasLibrosPublicados()
+        {
+            var libros = (from e in _BibliotecaContexto.Libros
+                          join t in _BibliotecaContexto.Autor
+                          on e.AutorId equals t.Id
+                          group t by t.Nombre into grupo
+                          orderby grupo.Count() descending
+                          select new
+                          {
+                              Nombre = grupo.Key,
+                              CantidadLibrosEscritos = grupo.Count()
+                          });
 
+            if (libros is null)
+            {
+                return NotFound(new { mensaje = "No se encontraron libros" });
+            }
+
+            return Ok(libros);
+        }
+
+        [HttpGet("Libros-más-recientes")]
+        public IActionResult LibrosMasRecientes()
+        {
+            var libros = _BibliotecaContexto.Libros
+                         .OrderByDescending(e => e.AnioPublicacion)
+                         .Select(e => new
+                         {
+                             e.Titulo,
+                             e.AnioPublicacion
+                         })
+                         .ToList();
+            if (libros == null || !libros.Any())
+            {
+                return NotFound(new { mensaje = "No se encontraron libros" });
+            }
+
+            return Ok(libros);
+        }
+
+
+        [HttpGet("Libros-x-año")]
+        public IActionResult LibrosTotalesPorAnio()
+        {
+            var libros = _BibliotecaContexto.Libros
+                         .GroupBy(e => e.AnioPublicacion)
+                         .OrderByDescending(g => g.Key)
+                         .Select(g => new
+                         {
+                             AnioPublicacion = g.Key,
+                             CantidadLibros = g.Count()
+                         })
+                         .ToList();
+
+            if (libros == null || !libros.Any())
+            {
+                return NotFound(new { mensaje = "No se encontraron libros" });
+            }
+
+            return Ok(libros);
+        }
+        [HttpGet("VerificarAutor/{id}")]
+        public IActionResult VerificarAutor(int id)
+        {
+
+            var autorConLibros = _BibliotecaContexto.Libros
+                                   .Any(l => l.AutorId == id);
+
+            if (!autorConLibros)
+            {
+
+                return NotFound(new { mensaje = "Este autor no tiene libros publicados." });
+            }
+
+
+            return Ok(new { mensaje = "El autor tiene libros publicados." });
+        }
+
+
+
+        [HttpGet("PrimerLibroPublicado")]
+        public IActionResult FirtsBooktoAutor(int id)
+        {
+            var primerLibro = (from l in _BibliotecaContexto.Libros
+                               join a in _BibliotecaContexto.Autor
+                               on l.AutorId equals a.Id
+                               where l.AutorId == id
+                               && l.AnioPublicacion == (
+                                   from l2 in _BibliotecaContexto.Libros
+                                   where l2.AutorId == l.AutorId
+                                   select l2.AnioPublicacion
+                               ).Min()
+                               select new
+                               {
+                                   a.Nombre,
+                                   l.Titulo,
+                                   l.AnioPublicacion
+                               }).FirstOrDefault();
+
+            if (primerLibro == null)
+            {
+                return NotFound(new { mensaje = "No se encontró el primer libro del autor o no tiene libros." });
+            }
+
+            return Ok(primerLibro);
+        }
 
     }
 }
